@@ -1,0 +1,85 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Tangerine', cursive;
+
+}
+#container{
+    position: relative;
+    display: grid;
+    place-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url(bgpink.svg);
+    background-size: cover;
+    animation: fadeIn 2s linear forwards;
+        & .image{
+           
+            opacity: 0;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+            width: 20%;
+            height: 20%;
+            transform-origin:bottom right ;
+            transition: 2s;
+            &.show{
+               
+                opacity: 1;
+            }
+        }
+    
+    & .text{
+        font-size: 5vw;
+        font-style: italic;
+        background-image: linear-gradient(-25deg,pink,rgb(255, 108, 206),rgb(255, 13, 134));
+        -webkit-background-clip: text;
+        color: transparent;
+        user-select: none;
+        opacity: 0;
+        transition: 2s;
+        margin-block: 1vmax;
+        &.show{
+          opacity: 1;
+        }
+    }
+    & .button{
+       font-size: 3vw;
+       font-style: italic;
+       background-image: linear-gradient(25deg,rgb(248, 191, 201),rgb(245, 119, 203),#e60274);
+       background-size: 200%;
+       background-position:  right;
+       border: none;
+       border-radius: 2vmax;
+       cursor: pointer;
+       color: aliceblue;
+       text-shadow: 1px 1px 5px aliceblue;
+       animation: bgMove 10s linear infinite alternate;
+      filter: drop-shadow(1px 1px 3px rgb(230, 2, 116)) ;
+      transition: 1s;
+     &:hover{
+        filter: drop-shadow(1px 1px 3px rgb(230, 2, 116))  saturate(120%);
+        scale: 1.05;
+        font-size: 3.5vw;
+     }
+    }
+}
+@keyframes showText {
+    from{opacity:  0;}
+    to{opacity:  1;}
+}
+@keyframes bgMove {
+    to {background-position:  left;}
+}
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@for $i from 1 through 5{
+    .image.show:nth-of-type(#{$i}){
+        transform: rotate(calc(360deg/12 *  ($i - 1)  ));
+       
+    }
+}
